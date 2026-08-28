@@ -1,0 +1,36 @@
+KAKÁ LANCHES — CARDÁPIO DIGITAL
+
+ARQUIVOS
+- index.html: página principal do cardápio
+- assets/: imagens extraídas do próprio cardápio enviado
+- gerar-qr.html: gerador de QR estático após a publicação
+- .nojekyll: evita processamento desnecessário pelo Jekyll no GitHub Pages
+
+PUBLICAÇÃO GRATUITA NO GITHUB PAGES
+
+1. Crie uma conta em https://github.com caso ainda não tenha.
+2. Clique em New repository.
+3. Nome sugerido: kaka-lanches
+4. Marque o repositório como Public.
+5. Crie o repositório.
+6. No repositório, use Add file > Upload files.
+7. Envie index.html, gerar-qr.html, .nojekyll e a pasta assets.
+8. Faça o commit.
+9. Vá em Settings > Pages.
+10. Em Build and deployment / Source, escolha Deploy from a branch.
+11. Branch: main. Folder: /(root). Salve.
+12. Aguarde a publicação e clique em Visit site.
+13. Sua URL será semelhante a:
+    https://SEUUSUARIO.github.io/kaka-lanches/
+
+QR CODE PERMANENTE
+1. Depois que a página estiver publicada, abra:
+   https://SEUUSUARIO.github.io/kaka-lanches/gerar-qr.html
+2. Cole a URL do cardápio.
+3. Clique em Gerar QR Code.
+4. Salve a imagem do QR.
+5. Esse QR é estático: ele contém diretamente a URL publicada.
+
+ATUALIZAÇÕES
+Para alterar preço ou texto depois, edite index.html no GitHub e faça commit.
+A URL permanece a mesma, portanto não é necessário trocar o QR impresso.
