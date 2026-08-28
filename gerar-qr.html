@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gerar QR permanente</title>
+<style>
+body{font-family:system-ui;background:#111;color:#fff;margin:0;padding:24px}
+.box{max-width:620px;margin:auto;background:#1b1b1b;padding:24px;border-radius:18px}
+input,button{width:100%;box-sizing:border-box;padding:14px;border-radius:12px;border:1px solid #444;font-size:16px}
+input{background:#0e0e0e;color:#fff;margin:12px 0}
+button{background:#ffb41f;border:0;font-weight:800;cursor:pointer}
+#qr{display:grid;place-items:center;background:#fff;padding:20px;border-radius:16px;margin-top:18px;min-height:100px}
+small{color:#bbb}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>QR Code permanente</h1>
+<p>Cole abaixo a URL final publicada no GitHub Pages. O código gerado é estático: ele codifica diretamente essa URL.</p>
+<input id="url" placeholder="https://seuusuario.github.io/kaka-lanches/">
+<button onclick="gerar()">Gerar QR Code</button>
+<div id="qr"><span style="color:#555">O QR aparecerá aqui.</span></div>
+<p><small>Depois, clique com o botão direito na imagem e salve. Enquanto a URL publicada continuar existindo, o QR continuará apontando para ela.</small></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+<script>
+function gerar(){
+ const url=document.getElementById('url').value.trim();
+ const qr=document.getElementById('qr');
+ if(!url){alert('Cole a URL publicada.');return;}
+ qr.innerHTML='';
+ QRCode.toCanvas(url,{width:420,margin:2,errorCorrectionLevel:'H'},function(err,canvas){
+   if(err){qr.textContent='Erro ao gerar o QR.';return;}
+   qr.appendChild(canvas);
+ });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="Cardápio digital do Kaká Lanches. Lanches, porções, bebidas e drinques.">
+  <title>Kaká Lanches | Cardápio Digital</title>
+  <style>
+    :root{
+      --bg:#090909; --card:#141414; --card2:#1c1b1c; --text:#fff;
+      --muted:#b8b8b8; --brand:#ffb41f; --brand2:#ffca5a; --line:#2d2d2d;
+      --green:#20c66b;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit}
+    .wrap{width:min(1120px,calc(100% - 28px));margin:auto}
+    .hero{position:relative;overflow:hidden;padding:28px 0 22px;border-bottom:1px solid var(--line);
+      background:radial-gradient(circle at 85% 0%,rgba(255,180,31,.25),transparent 28%),linear-gradient(180deg,#050505,#0b0b0b)}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:26px;align-items:center}
+    .brand{display:flex;align-items:center;gap:18px}
+    .brand img{width:142px;height:142px;object-fit:contain;border-radius:26px;background:#111;box-shadow:0 16px 45px rgba(0,0,0,.45)}
+    .eyebrow{font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;color:var(--brand);font-weight:800}
+    h1{font-size:clamp(2.1rem,5vw,4rem);line-height:.98;margin:8px 0 12px}
+    .hero p{color:#d2d2d2;max-width:640px;line-height:1.6;margin:0}
+    .hero-card{background:linear-gradient(145deg,#1b1b1b,#101010);border:1px solid #2c2c2c;border-radius:24px;padding:20px}
+    .hero-card strong{display:block;font-size:1.15rem;margin-bottom:8px}
+    .hero-card small{color:var(--muted);line-height:1.5}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:800;border-radius:14px;padding:13px 16px;border:1px solid #333;min-height:48px}
+    .btn.primary{background:var(--green);color:#04150b;border-color:transparent}
+    .btn.secondary{background:#171717}
+    .btn.brand{background:var(--brand);color:#17100a;border-color:transparent}
+    .nav{position:sticky;top:0;z-index:10;background:rgba(9,9,9,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav .wrap{display:flex;gap:8px;overflow:auto;padding:10px 0;scrollbar-width:none}
+    .nav a{white-space:nowrap;text-decoration:none;padding:10px 13px;border-radius:999px;background:#171717;border:1px solid #2a2a2a;font-size:.92rem;font-weight:750}
+    main{padding:28px 0 90px}
+    section{scroll-margin-top:76px;margin-bottom:38px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:15px}
+    h2{font-size:clamp(1.55rem,3vw,2.15rem);margin:0}
+    .section-head span{color:var(--muted);font-size:.92rem}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .item{background:var(--card);border:1px solid #252525;border-radius:18px;padding:17px;display:flex;gap:15px;justify-content:space-between;align-items:flex-start}
+    .item h3{margin:0 0 6px;font-size:1.05rem}
+    .item p{margin:0;color:var(--muted);line-height:1.45;font-size:.93rem}
+    .price{font-weight:900;color:var(--brand2);white-space:nowrap;font-size:1.04rem}
+    .feature{display:grid;grid-template-columns:1fr 280px;gap:14px;align-items:stretch;margin:16px 0}
+    .feature img{width:100%;height:100%;min-height:220px;object-fit:cover;border-radius:20px;border:1px solid #2b2b2b;background:#111}
+    .notice{background:#21190a;border:1px solid #614817;color:#ffd990;padding:13px 15px;border-radius:14px;margin:12px 0 18px}
+    .contact{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .contact a,.contact div{background:#141414;border:1px solid #272727;border-radius:18px;padding:17px;text-decoration:none}
+    .contact strong{display:block;margin-bottom:5px}
+    .contact span{color:var(--muted);font-size:.92rem}
+    footer{border-top:1px solid var(--line);padding:24px 0 92px;color:#999;text-align:center}
+    .fab{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:20;width:min(620px,calc(100% - 24px));background:var(--green);color:#04150b;text-decoration:none;font-weight:900;text-align:center;padding:15px 18px;border-radius:17px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+    @media(max-width:760px){
+      .hero-grid{grid-template-columns:1fr}
+      .brand{align-items:flex-start}
+      .brand img{width:108px;height:108px;border-radius:20px}
+      .grid{grid-template-columns:1fr}
+      .feature{grid-template-columns:1fr}
+      .feature img{max-height:290px}
+      .contact{grid-template-columns:1fr}
+      .btn{flex:1 1 150px}
+    }
+    @media(max-width:430px){
+      .wrap{width:min(100% - 20px,1120px)}
+      .brand{gap:12px}
+      .brand img{width:90px;height:90px}
+      .hero{padding-top:18px}
+      .item{padding:14px}
+      .price{font-size:.98rem}
+    }
+  </style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="brand">
+        <img src="assets/logo-kaka.png" alt="Kaká Lanches">
+        <div>
+          <div class="eyebrow">Cardápio Digital</div>
+          <h1>Kaká Lanches</h1>
+          <p>Lanches, porções, bebidas e drinques. Consulte o cardápio e faça seu pedido pelo WhatsApp.</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="https://wa.me/5511967792116?text=Ol%C3%A1%21%20Vim%20pelo%20card%C3%A1pio%20digital%20do%20Kak%C3%A1%20Lanches%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener">💬 Pedir no WhatsApp</a>
+        <a class="btn secondary" href="https://www.instagram.com/kakalanches.oficial/" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="btn brand" href="https://www.google.com/maps/search/?api=1&query=Rua+Paulo+Bourroul%2C+279%2C+S%C3%A3o+Paulo%2C+SP" target="_blank" rel="noopener">📍 Como chegar</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <strong>📍 Rua Paulo Bourroul, 279 — São Paulo/SP</strong>
+      <small>Contato: (11) 96779-2116<br>@kakalanches.oficial</small>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Seções do cardápio">
+  <div class="wrap">
+    <a href="#lanches">🍔 Lanches</a>
+    <a href="#porcoes">🍟 Porções</a>
+    <a href="#bebidas">🥤 Bebidas</a>
+    <a href="#cervejas">🍺 Cervejas</a>
+    <a href="#drinques">🍹 Drinques</a>
+    <a href="#contato">📍 Contato</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section id="lanches">
+    <div class="section-head"><h2>🍔 Lanches</h2><span>Feitos na hora</span></div>
+    <div class="notice">Ao adicionar +1 hambúrguer será cobrado o valor de <strong>R$ 3,00</strong>.</div>
+    <div class="grid">
+      <article class="item"><div><h3>X-Burguer</h3><p>Pão de hambúrguer, hambúrguer e queijo mussarela.</p></div><div class="price">R$ 11,00</div></article>
+      <article class="item"><div><h3>X-Bacon</h3><p>Pão de hambúrguer, hambúrguer, tiras de bacon, queijo mussarela e salada.</p></div><div class="price">R$ 18,00</div></article>
+      <article class="item"><div><h3>X-Calabresa</h3><p>Pão de hambúrguer, fatias de calabresa, queijo mussarela e salada.</p></div><div class="price">R$ 23,00</div></article>
+      <article class="item"><div><h3>X-Tudo</h3><p>Pão de hambúrguer, hambúrguer, presunto, bacon, ovo, queijo mussarela, cheddar, catupiry, cebola e salada.</p></div><div class="price">R$ 25,00</div></article>
+      <article class="item"><div><h3>X-Salada</h3><p>Pão de hambúrguer, hambúrguer, queijo mussarela e salada.</p></div><div class="price">R$ 13,00</div></article>
+      <article class="item"><div><h3>X-Frango</h3><p>Pão de hambúrguer, peito de frango, queijo mussarela, salada e catupiry.</p></div><div class="price">R$ 18,00</div></article>
+      <article class="item"><div><h3>X-Egg</h3><p>Pão de hambúrguer, hambúrguer, queijo mussarela, ovo e salada.</p></div><div class="price">R$ 15,00</div></article>
+      <article class="item"><div><h3>Misto Quente</h3><p>Pão de hambúrguer, queijo mussarela e presunto.</p></div><div class="price">R$ 12,00</div></article>
+      <article class="item"><div><h3>Americano</h3><p>Pão de hambúrguer, presunto, ovo, queijo mussarela e salada.</p></div><div class="price">R$ 13,00</div></article>
+      <article class="item"><div><h3>👑 Kaká Burger — Lanche da casa</h3><p>Pão de hambúrguer, hambúrguer Maturatta, queijo mussarela e cebola.</p></div><div class="price">R$ 30,00</div></article>
+    </div>
+  </section>
+
+  <section id="porcoes">
+    <div class="section-head"><h2>🍟 Porções</h2><span>Para compartilhar</span></div>
+    <div class="feature">
+      <div class="grid">
+        <article class="item"><div><h3>Batata frita — Simples</h3><p>Porção de fritas acompanhada com sal.</p></div><div class="price">R$ 17,00</div></article>
+        <article class="item"><div><h3>Batata frita — Completa</h3><p>Fritas, tiras pequenas de bacon, cheddar, catupiry e orégano.</p></div><div class="price">R$ 25,00</div></article>
+        <article class="item"><div><h3>Contrafilé Acebolado</h3><p>Porção de contrafilé com acompanhamento de cebola e pães na chapa.</p></div><div class="price">R$ 70,00</div></article>
+        <article class="item"><div><h3>Calabresa Acebolada</h3><p>Porção de calabresa com acompanhamento de cebola e pães na chapa.</p></div><div class="price">R$ 60,00</div></article>
+      </div>
+      <img src="assets/fritas.png" alt="Porção de fritas do Kaká Lanches" loading="lazy">
+    </div>
+  </section>
+
+  <section id="bebidas">
+    <div class="section-head"><h2>🥤 Bebidas</h2><span>Geladas</span></div>
+    <div class="feature">
+      <div class="grid">
+        <article class="item"><div><h3>Coca-Cola 350ml</h3><p>Tradicional e zero açúcar.</p></div><div class="price">R$ 6,00</div></article>
+        <article class="item"><div><h3>Guaraná 350ml</h3></div><div class="price">R$ 5,00</div></article>
+        <article class="item"><div><h3>Itubaína 350ml</h3></div><div class="price">R$ 5,00</div></article>
+        <article class="item"><div><h3>Sukita 350ml</h3></div><div class="price">R$ 5,00</div></article>
+        <article class="item"><div><h3>Sprite 350ml</h3></div><div class="price">R$ 5,00</div></article>
+        <article class="item"><div><h3>Schweppes 350ml</h3></div><div class="price">R$ 5,00</div></article>
+        <article class="item"><div><h3>Del Valle 290ml</h3></div><div class="price">R$ 6,00</div></article>
+        <article class="item"><div><h3>Coca-Mini</h3></div><div class="price">R$ 3,00</div></article>
+        <article class="item"><div><h3>Dollynho</h3></div><div class="price">R$ 3,00</div></article>
+        <article class="item"><div><h3>Dolly 2L</h3></div><div class="price">R$ 7,00</div></article>
+        <article class="item"><div><h3>Coca-Cola 2L</h3><p>Tradicional e zero açúcar.</p></div><div class="price">R$ 12,00</div></article>
+        <article class="item"><div><h3>Sukita 2L</h3></div><div class="price">R$ 8,00</div></article>
+        <article class="item"><div><h3>Água mineral 510ml</h3></div><div class="price">R$ 3,00</div></article>
+        <article class="item"><div><h3>Água com gás 510ml</h3></div><div class="price">R$ 4,00</div></article>
+        <article class="item"><div><h3>Energético Monster 473ml</h3></div><div class="price">R$ 12,00</div></article>
+        <article class="item"><div><h3>Energético Red Bull 250ml</h3></div><div class="price">R$ 12,00</div></article>
+      </div>
+      <img src="assets/bebidas.png" alt="Bebidas geladas" loading="lazy">
+    </div>
+  </section>
+
+  <section id="cervejas">
+    <div class="section-head"><h2>🍺 Cervejas</h2><span>Consulte disponibilidade</span></div>
+    <div class="grid">
+      <article class="item"><div><h3>Itaipava 269ml</h3></div><div class="price">R$ 4,00</div></article>
+      <article class="item"><div><h3>Skol 269ml</h3></div><div class="price">R$ 5,00</div></article>
+      <article class="item"><div><h3>Original 269ml</h3></div><div class="price">R$ 5,00</div></article>
+      <article class="item"><div><h3>Amstel 269ml</h3></div><div class="price">R$ 5,00</div></article>
+      <article class="item"><div><h3>Império 269ml</h3></div><div class="price">R$ 5,00</div></article>
+      <article class="item"><div><h3>Heineken 350ml</h3></div><div class="price">R$ 10,00</div></article>
+      <article class="item"><div><h3>Brahma Duplo Malte 350ml</h3></div><div class="price">R$ 8,00</div></article>
+      <article class="item"><div><h3>Original 300ml — Garrafa</h3></div><div class="price">R$ 6,00</div></article>
+      <article class="item"><div><h3>Heineken 330ml — Garrafa</h3></div><div class="price">R$ 10,00</div></article>
+      <article class="item"><div><h3>Budweiser 330ml</h3></div><div class="price">R$ 8,00</div></article>
+      <article class="item"><div><h3>Stella Artois 330ml</h3></div><div class="price">R$ 8,00</div></article>
+      <article class="item"><div><h3>Smirnoff Ice 275ml</h3></div><div class="price">R$ 10,00</div></article>
+      <article class="item"><div><h3>Corona 330ml</h3></div><div class="price">R$ 11,00</div></article>
+      <article class="item"><div><h3>Spaten 330ml</h3></div><div class="price">R$ 11,00</div></article>
+      <article class="item"><div><h3>Skol Beats 269ml</h3></div><div class="price">R$ 10,00</div></article>
+    </div>
+  </section>
+
+  <section id="drinques">
+    <div class="section-head"><h2>🍹 Drinques</h2><span>Caipirinhas</span></div>
+    <div class="feature">
+      <div class="grid">
+        <article class="item"><div><h3>Caipirinha de limão</h3><p>51 ou Velho Barreiro.</p></div><div class="price">R$ 20,00</div></article>
+        <article class="item"><div><h3>Caipirinha de abacaxi</h3><p>51 ou Velho Barreiro.</p></div><div class="price">R$ 20,00</div></article>
+        <article class="item"><div><h3>Caipirinha de frutas da estação</h3><p>Vodka.</p></div><div class="price">R$ 25,00</div></article>
+      </div>
+      <img src="assets/drinques.png" alt="Caipirinhas" loading="lazy">
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="section-head"><h2>📍 Contato</h2><span>Fale com o Kaká Lanches</span></div>
+    <div class="contact">
+      <a href="https://wa.me/5511967792116?text=Ol%C3%A1%21%20Vim%20pelo%20card%C3%A1pio%20digital%20do%20Kak%C3%A1%20Lanches%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><strong>💬 WhatsApp</strong><span>(11) 96779-2116</span></a>
+      <a href="https://www.instagram.com/kakalanches.oficial/" target="_blank" rel="noopener"><strong>📸 Instagram</strong><span>@kakalanches.oficial</span></a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Rua+Paulo+Bourroul%2C+279%2C+S%C3%A3o+Paulo%2C+SP" target="_blank" rel="noopener"><strong>📍 Endereço</strong><span>Rua Paulo Bourroul, 279 — São Paulo/SP</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Kaká Lanches • Cardápio digital</div>
+</footer>
+
+<a class="fab" href="https://wa.me/5511967792116?text=Ol%C3%A1%21%20Vim%20pelo%20card%C3%A1pio%20digital%20do%20Kak%C3%A1%20Lanches%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener">💬 FAZER PEDIDO PELO WHATSAPP</a>
+</body>
+</html>
