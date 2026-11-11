@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta http-equiv="Content-Security-Policy"
-content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; upgrade-insecure-requests">
-<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111111">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; upgrade-insecure-requests">
 <title>QR Code | Kaká Lanches</title>
 <style>
 *{box-sizing:border-box}
@@ -13,49 +13,21 @@ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#111;c
 .box{max-width:650px;margin:auto;background:#1b1b1b;border:1px solid #2c2c2c;border-radius:20px;padding:24px}
 h1{margin-top:0}
 p{line-height:1.5;color:#d0d0d0}
-input,button{width:100%;padding:14px;border-radius:12px;font-size:16px}
-input{background:#0d0d0d;color:#fff;border:1px solid #444;margin:12px 0}
-button{border:0;background:#ffb41f;color:#17100a;font-weight:900;cursor:pointer}
+button{width:100%;padding:14px;border:0;border-radius:12px;font-size:16px;background:#ffb41f;color:#17100a;font-weight:900;cursor:pointer}
 #qrcode{display:flex;justify-content:center;align-items:center;background:#fff;padding:20px;border-radius:16px;margin:18px auto 0;min-height:220px}
 #qrcode img,#qrcode canvas{max-width:100%;height:auto}
 .status{margin-top:12px;color:#aaa;font-size:14px;overflow-wrap:anywhere}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" defer></script>
+<script src="gerar-qr.js" defer></script>
 </head>
 <body>
-<div class="box">
+<main class="box">
 <h1>QR Code permanente</h1>
-<p>Este QR aponta diretamente para o cardápio publicado. Você pode alterar o conteúdo do site sem trocar o QR, desde que mantenha a mesma URL.</p>
-<input id="url" value="https://kaka-lanches.github.io/cardapio/" aria-label="URL do cardápio">
-<button id="gerar">Gerar / Atualizar QR Code</button>
-<div id="qrcode"></div>
-<div class="status" id="status">URL atual: https://kaka-lanches.github.io/cardapio/</div>
-</div>
-<script>
-const input = document.getElementById('url');
-const box = document.getElementById('qrcode');
-const status = document.getElementById('status');
-
-function gerarQR() {
-  const valor = input.value.trim();
-  if (!valor) {
-    alert('Informe uma URL.');
-    return;
-  }
-  box.innerHTML = '';
-  new QRCode(box, {
-    text: valor,
-    width: 360,
-    height: 360,
-    colorDark: '#000000',
-    colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.H
-  });
-  status.textContent = 'QR atualizado para: ' + valor;
-}
-
-document.getElementById('gerar').addEventListener('click', gerarQR);
-window.addEventListener('DOMContentLoaded', gerarQR);
-</script>
+<p>Este QR Code aponta exclusivamente para o cardápio oficial do Kaká Lanches. O endereço é fixo e não pode ser alterado nesta página.</p>
+<button id="gerar" type="button">Gerar / Atualizar QR Code</button>
+<div id="qrcode" role="img" aria-label="QR Code do cardápio oficial"></div>
+<div class="status" id="status" aria-live="polite">Destino fixo: https://kaka-lanches.github.io/cardapio/</div>
+</main>
 </body>
 </html>
