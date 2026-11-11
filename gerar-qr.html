@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111111">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; upgrade-insecure-requests">
 <title>QR Code | Kaká Lanches</title>
 <style>
 *{box-sizing:border-box}
@@ -18,7 +18,7 @@ button{width:100%;padding:14px;border:0;border-radius:12px;font-size:16px;backgr
 #qrcode img,#qrcode canvas{max-width:100%;height:auto}
 .status{margin-top:12px;color:#aaa;font-size:14px;overflow-wrap:anywhere}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" defer></script>
+<script src="vendor/qrcode.min.js" defer></script>
 <script src="gerar-qr.js" defer></script>
 </head>
 <body>
